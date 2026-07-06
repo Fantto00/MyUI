@@ -4,8 +4,8 @@ plugins {
 }
 
 android {
-    namespace = "com.fantto.myui"
-    compileSdk = 36
+    namespace = "com.fantto.mylib"
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 24
