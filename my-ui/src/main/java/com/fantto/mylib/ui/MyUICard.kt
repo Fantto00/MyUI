@@ -22,6 +22,8 @@ import com.fantto.mylib.foundation.color.MyUIColorGroup
 import com.fantto.mylib.foundation.color.MyUIColorsGroup
 import com.fantto.mylib.foundation.property.MyUICornerRadius
 import com.fantto.mylib.foundation.property.MyUIPadding
+import com.fantto.mylib.foundation.theme.LocalMyUICornerRadius
+import com.fantto.mylib.foundation.theme.LocalMyUIContentPadding
 
 object MyUICard {
 
@@ -29,12 +31,14 @@ object MyUICard {
     fun Container(
         containerColor: MyUIColorGroup,
         modifier: Modifier = Modifier,
-        cornerRadius: MyUICornerRadius = MyUICornerRadius.create(12.dp),
-        contentPadding: MyUIPadding = MyUIPadding.all(16.dp),
+        cornerRadius: MyUICornerRadius? = null,
+        contentPadding: MyUIPadding? = null,
         borderWidth: Dp = 1.dp,
         content: @Composable () -> Unit
     ) {
-        val shape = cornerRadius.toShape()
+        val resolvedCornerRadius = cornerRadius ?: LocalMyUICornerRadius.current
+        val resolvedContentPadding = contentPadding ?: LocalMyUIContentPadding.current
+        val shape = resolvedCornerRadius.toShape()
         Column(
             modifier = modifier
                 .clip(shape)
@@ -49,10 +53,10 @@ object MyUICard {
                     } ?: Modifier
                 )
                 .padding(
-                    top = contentPadding.top,
-                    bottom = contentPadding.bottom,
-                    start = contentPadding.start,
-                    end = contentPadding.end
+                    top = resolvedContentPadding.top,
+                    bottom = resolvedContentPadding.bottom,
+                    start = resolvedContentPadding.start,
+                    end = resolvedContentPadding.end
                 ),
             content = { content() }
         )
@@ -62,21 +66,23 @@ object MyUICard {
     fun Container(
         containerColor: MyUIColorsGroup,
         modifier: Modifier = Modifier,
-        cornerRadius: MyUICornerRadius = MyUICornerRadius.create(12.dp),
-        contentPadding: MyUIPadding = MyUIPadding.all(16.dp),
+        cornerRadius: MyUICornerRadius? = null,
+        contentPadding: MyUIPadding? = null,
         content: @Composable () -> Unit
     ) {
-        val shape = cornerRadius.toShape()
+        val resolvedCornerRadius = cornerRadius ?: LocalMyUICornerRadius.current
+        val resolvedContentPadding = contentPadding ?: LocalMyUIContentPadding.current
+        val shape = resolvedCornerRadius.toShape()
         val gradient = Brush.linearGradient(colors = containerColor.containerGradient)
         Column(
             modifier = modifier
                 .clip(shape)
                 .background(brush = gradient)
                 .padding(
-                    top = contentPadding.top,
-                    bottom = contentPadding.bottom,
-                    start = contentPadding.start,
-                    end = contentPadding.end
+                    top = resolvedContentPadding.top,
+                    bottom = resolvedContentPadding.bottom,
+                    start = resolvedContentPadding.start,
+                    end = resolvedContentPadding.end
                 ),
             content = { content() }
         )
@@ -87,8 +93,8 @@ object MyUICard {
         containerColor: MyUIColorGroup,
         onClick: () -> Unit,
         modifier: Modifier = Modifier,
-        cornerRadius: MyUICornerRadius = MyUICornerRadius.create(12.dp),
-        contentPadding: MyUIPadding = MyUIPadding.all(16.dp),
+        cornerRadius: MyUICornerRadius? = null,
+        contentPadding: MyUIPadding? = null,
         borderWidth: Dp = 1.dp,
         content: @Composable () -> Unit
     ) {
@@ -111,8 +117,8 @@ object MyUICard {
         containerColor: MyUIColorsGroup,
         onClick: () -> Unit,
         modifier: Modifier = Modifier,
-        cornerRadius: MyUICornerRadius = MyUICornerRadius.create(12.dp),
-        contentPadding: MyUIPadding = MyUIPadding.all(16.dp),
+        cornerRadius: MyUICornerRadius? = null,
+        contentPadding: MyUIPadding? = null,
         content: @Composable () -> Unit
     ) {
         Column(
