@@ -34,23 +34,18 @@ object MyUIIcon {
         } else modifier
 
         Box(
-            modifier = clickableModifier.size(containerSize),
+            modifier = clickableModifier
+                .size(containerSize)
+                .clip(CircleShape)
+                .background(containerColor.container),
             contentAlignment = Alignment.Center
         ) {
-            Box(
-                modifier = Modifier
-                    .size(containerSize)
-                    .clip(CircleShape)
-                    .background(containerColor.container),
-                contentAlignment = Alignment.Center
-            ) {
-                androidx.compose.material3.Icon(
-                    imageVector = icon,
-                    contentDescription = contentDescription,
-                    modifier = Modifier.size(size),
-                    tint = containerColor.content
-                )
-            }
+            androidx.compose.material3.Icon(
+                imageVector = icon,
+                contentDescription = contentDescription,
+                modifier = Modifier.size(size),
+                tint = containerColor.content
+            )
         }
     }
 

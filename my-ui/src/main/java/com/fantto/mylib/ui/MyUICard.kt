@@ -31,6 +31,7 @@ object MyUICard {
         modifier: Modifier = Modifier,
         cornerRadius: MyUICornerRadius = MyUICornerRadius.create(12.dp),
         contentPadding: MyUIPadding = MyUIPadding.all(16.dp),
+        borderWidth: Dp = 1.dp,
         content: @Composable () -> Unit
     ) {
         val shape = cornerRadius.toShape()
@@ -41,7 +42,7 @@ object MyUICard {
                 .then(
                     containerColor.border?.let {
                         Modifier.border(
-                            width = 1.dp,
+                            width = borderWidth,
                             color = it,
                             shape = shape
                         )
@@ -88,6 +89,7 @@ object MyUICard {
         modifier: Modifier = Modifier,
         cornerRadius: MyUICornerRadius = MyUICornerRadius.create(12.dp),
         contentPadding: MyUIPadding = MyUIPadding.all(16.dp),
+        borderWidth: Dp = 1.dp,
         content: @Composable () -> Unit
     ) {
         Column(
@@ -97,6 +99,7 @@ object MyUICard {
                     containerColor = containerColor,
                     cornerRadius = cornerRadius,
                     contentPadding = contentPadding,
+                    borderWidth = borderWidth,
                     content = content
                 )
             }

@@ -17,4 +17,10 @@ object MyUIColor {
     val DISABLED = Color(0xFFBDBDBD)
     val DIVIDER = Color(0xFFE0E0E0)
     val OVERLAY = Color(0x80000000)
+
+    val BACKGROUND_DARK = Color(0xFF121212)
+    val SURFACE_DARK = Color(0xFF1E1E1E)
+    val ON_BACKGROUND_DARK = Color(0xFFE0E0E0)
+    val ON_SURFACE_DARK = Color(0xFFE0E0E0)
+    val DIVIDER_DARK = Color(0xFF2D2D2D)
 }

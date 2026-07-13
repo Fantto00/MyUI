@@ -1,6 +1,5 @@
 package com.fantto.mylib.foundation.property
 
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 object MyUISpacings {
@@ -11,6 +10,4 @@ object MyUISpacings {
     val L = MyUISpacing.create(24.dp)
     val XL = MyUISpacing.create(32.dp)
     val XXL = MyUISpacing.create(48.dp)
-
-    fun get(spacing: MyUISpacing): Dp = spacing.base
 }
